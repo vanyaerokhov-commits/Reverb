@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_Слой_1" data-name="Слой 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.08 797.89">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #000;
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <ellipse class="cls-1" cx="608.58" cy="589.46" rx="98.04" ry="143.4" transform="translate(-238.64 582.59) rotate(-43.62)"/>
+  <ellipse class="cls-1" cx="566.81" cy="547.69" rx="153.89" ry="225.08" transform="translate(-221.36 542.25) rotate(-43.62)"/>
+  <ellipse class="cls-1" cx="486.82" cy="483.43" rx="224.7" ry="328.66" transform="translate(-199.11 469.32) rotate(-43.62)"/>
+  <ellipse class="cls-1" cx="442.55" cy="436.98" rx="267.41" ry="391.13" transform="translate(-179.28 425.95) rotate(-43.62)"/>
+  <ellipse class="cls-1" cx="392.04" cy="398.95" rx="314.85" ry="460.52" transform="translate(-166.99 380.61) rotate(-43.62)"/>
+</svg>

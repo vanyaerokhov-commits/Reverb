@@ -112,7 +112,7 @@ export function Cart() {
               <Link to="/events" className="flex-1">
                 <Button
                   variant="outline"
-                  className="w-full border-[#242221] text-[#C7C1B6] hover:bg-[#242221] hover:text-white"
+                  className="w-full bg-[#C7C1B6] border-[#C7C1B6] text-[#E5381E] hover:bg-[#C7C1B6]/90 hover:border-[#C7C1B6]/90"
                 >
                   Browse More
                 </Button>

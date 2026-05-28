@@ -7,12 +7,14 @@ import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { mockEvents } from "../data/mockData";
 import { useWishlist } from "../context/WishlistContext";
+import { getGenreColors } from "../utils/genreColors";
+import eventsHero from "../../imports/identity/identity-3.jpg";
+import geometricPattern from "../../imports/image-10.png";
 import bmthImage from "../../imports/image-3.png";
 import architectsImage from "../../imports/image-14.png";
 import hunnaImage from "../../imports/image-15.png";
 import punctualImage from "../../imports/image-18.png";
 import foalsImage from "../../imports/image-20.png";
-import geometricPattern from "../../imports/image-10.png";
 
 export function Events() {
   const [currentMonth, setCurrentMonth] = useState(new Date(2026, 3)); // April 2026
@@ -96,26 +98,32 @@ export function Events() {
 
   return (
     <div className="relative space-y-6">
-      {/* Geometric Background Pattern */}
+      {/* Background */}
       <div className="fixed inset-0 pointer-events-none opacity-10 z-0">
         <img src={geometricPattern} alt="" className="w-full h-full object-cover" />
       </div>
-
-      {/* Circular Background Elements */}
       <div className="fixed inset-0 pointer-events-none opacity-5 z-0 overflow-hidden">
-        <div className="absolute -left-48 top-1/4 w-[650px] h-[650px] rounded-full bg-[#242221]"></div>
-        <div className="absolute right-1/4 -bottom-40 w-[850px] h-[850px] rounded-full bg-[#242221]"></div>
+        <div className="absolute -right-48 top-1/4 w-[650px] h-[650px] rounded-full bg-[#242221]"></div>
+        <div className="absolute left-1/4 -bottom-40 w-[850px] h-[850px] rounded-full bg-[#242221]"></div>
       </div>
 
-      {/* Header */}
-      <div className="relative z-10 flex items-center justify-between flex-wrap gap-4">
-        <div className="flex items-start gap-3">
-          <div className="w-1 h-12 bg-[#E5381E] rounded-[10px] mt-1"></div>
-          <div>
-            <h2 className="text-3xl font-bold text-white mb-1">Events Calendar</h2>
-            <p className="text-[#C7C1B6]">Plan your music journey</p>
+      {/* Hero Banner */}
+      <div className="relative z-10 overflow-hidden rounded-2xl h-40 md:h-52">
+        <img src={eventsHero} alt="" className="w-full h-full object-cover brightness-[0.5]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#141111]/80 via-transparent to-[#141111]/60" />
+        <div className="absolute inset-0 flex items-center px-8">
+          <div className="flex items-start gap-3">
+            <div className="w-1 h-12 bg-[#E5381E] rounded-[10px]"></div>
+            <div>
+              <h2 className="text-3xl font-bold text-white mb-1">Events Calendar</h2>
+              <p className="text-[#C7C1B6]">Plan your music journey</p>
+            </div>
           </div>
         </div>
+      </div>
+
+      {/* View toggle */}
+      <div className="relative z-10 flex items-center justify-end flex-wrap gap-4">
         <div className="flex items-center gap-2">
           <Button
             variant="outline"
@@ -246,7 +254,7 @@ export function Events() {
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#141111] to-transparent"></div>
-                    <Badge className="absolute top-3 left-3 bg-[#E5381E]/90 text-white border-0">
+                    <Badge className="absolute top-3 left-3 text-white border-0" style={{ backgroundColor: getGenreColors(event.genre).accent }}>
                       {event.genre}
                     </Badge>
                     <button

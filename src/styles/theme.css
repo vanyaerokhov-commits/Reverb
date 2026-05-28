@@ -135,6 +135,7 @@
 
   html {
     font-size: var(--font-size);
+    font-family: "itc-avant-garde-gothic-pro", sans-serif;
   }
 
   h1 {

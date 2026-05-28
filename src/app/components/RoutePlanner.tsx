@@ -17,18 +17,30 @@ function getDistance(id1: string, id2: string): number {
 
 /** City → [lat, lng] lookup */
 const CITY_COORDS: Record<string, [number, number]> = {
-  London:       [51.5074, -0.1278],
-  Manchester:   [53.4808, -2.2426],
-  Birmingham:   [52.4862, -1.8904],
-  Glasgow:      [55.8642, -4.2518],
-  Brighton:     [50.8229, -0.1363],
-  Leeds:        [53.7965, -1.5478],
-  Liverpool:    [53.4084, -2.9916],
-  Bristol:      [51.4545, -2.5879],
-  Edinburgh:    [55.9533, -3.1883],
-  Sheffield:    [53.3811, -1.4701],
-  Nottingham:   [52.9548, -1.1581],
-  Cardiff:      [51.4816, -3.1791],
+  // UK
+  London:         [51.5074,  -0.1278],
+  Manchester:     [53.4808,  -2.2426],
+  Birmingham:     [52.4862,  -1.8904],
+  Glasgow:        [55.8642,  -4.2518],
+  Brighton:       [50.8229,  -0.1363],
+  Leeds:          [53.7965,  -1.5478],
+  Liverpool:      [53.4084,  -2.9916],
+  Bristol:        [51.4545,  -2.5879],
+  Edinburgh:      [55.9533,  -3.1883],
+  Sheffield:      [53.3811,  -1.4701],
+  Nottingham:     [52.9548,  -1.1581],
+  Cardiff:        [51.4816,  -3.1791],
+  // USA
+  "New York":     [40.7128,  -74.0060],
+  Chicago:        [41.8781,  -87.6298],
+  "Los Angeles":  [34.0522, -118.2437],
+  Miami:          [25.7617,  -80.1918],
+  // Europe
+  Berlin:         [52.5200,   13.4050],
+  Paris:          [48.8566,    2.3522],
+  Amsterdam:      [52.3676,    4.9041],
+  Barcelona:      [41.3851,    2.1734],
+  Madrid:         [40.4168,   -3.7038],
 };
 
 /** Inline Leaflet map component */
@@ -60,6 +72,13 @@ function RouteMap({ events }: { events: typeof mockEvents }) {
 
     const map = L.map(mapRef.current, { zoomControl: true, scrollWheelZoom: false });
     mapInstanceRef.current = map;
+
+    // Enable scroll zoom only while hovering over the map
+    const container = mapRef.current;
+    const enableScroll  = () => map.scrollWheelZoom.enable();
+    const disableScroll = () => map.scrollWheelZoom.disable();
+    container.addEventListener("mouseenter", enableScroll);
+    container.addEventListener("mouseleave", disableScroll);
 
     L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
       attribution: '© <a href="https://carto.com/">CARTO</a>',
@@ -106,6 +125,8 @@ function RouteMap({ events }: { events: typeof mockEvents }) {
     }
 
     return () => {
+      container.removeEventListener("mouseenter", enableScroll);
+      container.removeEventListener("mouseleave", disableScroll);
       map.remove();
       mapInstanceRef.current = null;
     };

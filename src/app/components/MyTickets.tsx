@@ -12,6 +12,7 @@ import hunnaImage from "../../imports/image-15.png";
 import architectsImage from "../../imports/image-14.png";
 import punctualImage from "../../imports/image-18.png";
 import foalsImage from "../../imports/image-20.png";
+import ticketsHero from "../../imports/identity/identity-2.jpg";
 import geometricPattern from "../../imports/image-10.png";
 
 export function MyTickets() {
@@ -183,32 +184,34 @@ export function MyTickets() {
 
   return (
     <div className="relative space-y-6">
-      {/* Geometric Background Pattern */}
+      {/* Background */}
       <div className="fixed inset-0 pointer-events-none opacity-10 z-0">
-        <img
-          src={geometricPattern}
-          alt=""
-          className="w-full h-full object-cover"
-        />
+        <img src={geometricPattern} alt="" className="w-full h-full object-cover" />
       </div>
-
-      {/* Circular Background Elements */}
       <div className="fixed inset-0 pointer-events-none opacity-5 z-0 overflow-hidden">
-        <div className="absolute left-1/3 -top-48 w-[750px] h-[750px] rounded-full bg-[#242221]"></div>
-        <div className="absolute -right-64 top-2/3 w-[950px] h-[950px] rounded-full bg-[#242221]"></div>
+        <div className="absolute -right-48 top-1/4 w-[650px] h-[650px] rounded-full bg-[#242221]"></div>
+        <div className="absolute left-1/4 -bottom-40 w-[850px] h-[850px] rounded-full bg-[#242221]"></div>
       </div>
 
-      {/* Header */}
-      <div className="relative z-10 flex items-center justify-between flex-wrap gap-3">
-        <div className="flex items-start gap-3">
-          <div className="w-1 h-12 bg-[#E5381E] rounded-[10px] mt-1"></div>
-          <div>
-            <h2 className="text-3xl font-bold text-white mb-1">My Tickets</h2>
-            <p className="text-[#C7C1B6]">
-              All your tickets from different platforms in one place
-            </p>
+      {/* Hero Banner */}
+      <div className="relative z-10 overflow-hidden rounded-2xl h-44 md:h-56">
+        <img src={ticketsHero} alt="" className="w-full h-full object-cover brightness-[0.45] object-top" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#141111]/80 via-transparent to-[#141111]/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#141111]/60 to-transparent" />
+        <div className="absolute inset-0 flex items-center justify-between px-8">
+          <div className="flex items-start gap-3">
+            <div className="w-1 h-12 bg-[#E5381E] rounded-[10px] mt-1"></div>
+            <div>
+              <h2 className="text-3xl font-bold text-white mb-1">My Tickets</h2>
+              <p className="text-[#C7C1B6]">All your tickets in one place</p>
+            </div>
           </div>
         </div>
+      </div>
+
+      {/* Sort & Actions */}
+      <div className="relative z-10 flex items-center justify-between flex-wrap gap-3">
+        <div></div>
         <div className="flex items-center gap-2">
           <Select value={sortBy} onValueChange={setSortBy}>
             <SelectTrigger className="w-44 bg-[#141111]/50 border-[#242221] text-[#C7C1B6] h-9">
