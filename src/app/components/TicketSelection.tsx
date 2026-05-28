@@ -212,8 +212,8 @@ export function TicketSelection() {
 
                 {/* Bottom: price left, controls right */}
                 <div className="flex items-center justify-between gap-2">
-                  <div>
-                    <p className="text-2xl font-bold text-white">${tier.price}</p>
+                  <div className="min-w-0">
+                    <p className="text-xl sm:text-2xl font-bold text-white">${tier.price}</p>
                     <p className="text-xs text-[#C7C1B6]">per ticket</p>
                   </div>
 
@@ -226,7 +226,7 @@ export function TicketSelection() {
                         >
                           <Minus className="w-4 h-4" />
                         </button>
-                        <span className="w-8 text-center text-white font-semibold text-sm">
+                        <span className="w-7 text-center text-white font-semibold text-sm">
                           {getQty(tier.id)}
                         </span>
                         <button
@@ -238,7 +238,7 @@ export function TicketSelection() {
                       </div>
                       <Button
                         onClick={() => handleAddToCart(tier)}
-                        className={`transition-all ${
+                        className={`transition-all px-3 sm:px-4 ${
                           justAdded === tier.id
                             ? "bg-green-600 hover:bg-green-600 text-white"
                             : "bg-[#E5381E] hover:bg-[#991a0a] text-white"
@@ -246,13 +246,13 @@ export function TicketSelection() {
                       >
                         {justAdded === tier.id ? (
                           <>
-                            <CheckCircle2 className="w-4 h-4 mr-1 sm:mr-2" />
-                            <span>Added!</span>
+                            <CheckCircle2 className="w-4 h-4 sm:mr-1" />
+                            <span className="hidden sm:inline">Added!</span>
                           </>
                         ) : (
                           <>
-                            <ShoppingCart className="w-4 h-4 mr-1 sm:mr-2" />
-                            <span>Add to Cart</span>
+                            <ShoppingCart className="w-4 h-4 sm:mr-1" />
+                            <span className="hidden sm:inline">Add to Cart</span>
                           </>
                         )}
                       </Button>

@@ -238,19 +238,19 @@ export function RoutePlanner() {
 
           {/* Selected Events Timeline */}
           <Card className="bg-[#141111]/50 border-[#242221] p-6 relative">
-            <div className="flex items-center justify-between mb-6">
-              <div className="flex items-center gap-3">
-                <div className="w-1 h-8 bg-[#E5381E] rounded-[10px]"></div>
-                <h3 className="text-xl font-bold text-white">Your Route</h3>
+            <div className="flex items-center justify-between mb-6 gap-2">
+              <div className="flex items-center gap-3 min-w-0">
+                <div className="w-1 h-8 bg-[#E5381E] rounded-[10px] flex-shrink-0"></div>
+                <h3 className="text-xl font-bold text-white truncate">Your Route</h3>
               </div>
               {selectedEventDetails.length > 0 && (
                 <Button
                   variant="outline"
                   size="sm"
-                  className="bg-[#C7C1B6] border-[#C7C1B6] text-[#E5381E] hover:bg-[#C7C1B6]/90 hover:border-[#C7C1B6]/90"
+                  className="bg-[#C7C1B6] border-[#C7C1B6] text-[#E5381E] hover:bg-[#C7C1B6]/90 hover:border-[#C7C1B6]/90 flex-shrink-0"
                 >
-                  <Navigation className="w-4 h-4 mr-2" />
-                  Export Route
+                  <Navigation className="w-4 h-4 sm:mr-2" />
+                  <span className="hidden sm:inline">Export Route</span>
                 </Button>
               )}
             </div>
@@ -269,20 +269,20 @@ export function RoutePlanner() {
                         )}
                       </div>
 
-                      <Card className="flex-1 bg-[#242221]/50 border-[#E5381E]/30 p-4">
-                        <div className="flex items-start gap-4">
+                      <Card className="flex-1 bg-[#242221]/50 border-[#E5381E]/30 p-3 sm:p-4 overflow-hidden min-w-0">
+                        <div className="flex items-center gap-3">
                           <img
                             src={event.artistId === "1" ? bmthImage : event.artistId === "7" ? architectsImage : event.artistId === "8" ? hunnaImage : event.artistId === "9" ? punctualImage : event.artistId === "10" ? foalsImage : event.image}
                             alt={event.artistName}
-                            className="w-20 h-20 rounded-lg object-cover"
+                            className="w-14 h-14 sm:w-20 sm:h-20 rounded-lg object-cover flex-shrink-0"
                           />
                           <div className="flex-1 min-w-0">
-                            <div className="flex items-start justify-between mb-2">
-                              <div className="flex-1">
-                                <h4 className="text-white font-bold truncate">
+                            <div className="flex items-start justify-between gap-1 mb-1">
+                              <div className="min-w-0">
+                                <h4 className="text-white font-bold truncate text-sm sm:text-base">
                                   {event.artistName}
                                 </h4>
-                                <p className="text-sm text-[#C7C1B6] truncate">
+                                <p className="text-xs text-[#C7C1B6] truncate">
                                   {event.venue}, {event.city}
                                 </p>
                               </div>
@@ -290,24 +290,24 @@ export function RoutePlanner() {
                                 size="icon"
                                 variant="ghost"
                                 onClick={() => removeEvent(event.id)}
-                                className="text-[#C7C1B6] hover:text-red-400 -mr-2"
+                                className="text-[#C7C1B6] hover:text-red-400 flex-shrink-0 w-7 h-7"
                               >
                                 <X className="w-4 h-4" />
                               </Button>
                             </div>
-                            <div className="flex flex-wrap gap-3 text-xs text-[#C7C1B6]">
-                              <div className="flex items-center gap-1">
-                                <Calendar className="w-3 h-3" />
+                            <div className="flex flex-wrap gap-2 text-xs text-[#C7C1B6]">
+                              <span className="flex items-center gap-1">
+                                <Calendar className="w-3 h-3 flex-shrink-0" />
                                 {new Date(event.date).toLocaleDateString("en-US", {
                                   month: "short",
                                   day: "numeric",
                                 })}
-                              </div>
-                              <div className="flex items-center gap-1">
-                                <Clock className="w-3 h-3" />
+                              </span>
+                              <span className="flex items-center gap-1">
+                                <Clock className="w-3 h-3 flex-shrink-0" />
                                 {event.time}
-                              </div>
-                              <Badge className="bg-[#E5381E]/20 text-[#C7C1B6] border-0 text-xs">
+                              </span>
+                              <Badge className="bg-[#E5381E]/20 text-[#C7C1B6] border-0 text-xs px-1.5">
                                 ${event.price}
                               </Badge>
                             </div>

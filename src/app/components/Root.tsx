@@ -41,7 +41,7 @@ export function Root() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#242221] overflow-x-hidden">
+    <div className="min-h-screen bg-[#242221]">
       <ScrollToTop />
       {/* Header */}
       <header className="sticky top-0 z-50 border-b border-[#141111] bg-[#242221]/95 backdrop-blur-xl">
