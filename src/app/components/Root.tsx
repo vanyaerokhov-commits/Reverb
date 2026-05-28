@@ -45,9 +45,9 @@ export function Root() {
       <ScrollToTop />
       {/* Header */}
       <header className="sticky top-0 z-50 border-b border-[#141111] bg-[#242221]/95 backdrop-blur-xl">
-        <div className="w-full px-6 py-4 flex items-center justify-between">
+        <div className="w-full px-4 sm:px-6 py-4 flex items-center justify-between">
           <Link to="/" className="flex items-center">
-            <img src={reverbLogo} alt="Reverb" className="h-10 object-contain" />
+            <img src={reverbLogo} alt="Reverb" className="h-7 sm:h-10 object-contain" />
           </Link>
 
           <div className="flex items-center gap-3">

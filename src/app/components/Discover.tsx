@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Search, MapPin, Calendar, DollarSign, BadgeCheck, Bell, TrendingUp, Sparkles, Heart, ChevronRight } from "lucide-react";
-import { Link } from "react-router";
+import { Link, useSearchParams } from "react-router";
 import { toast } from "sonner";
 import { Skeleton } from "./ui/skeleton";
 import { Input } from "./ui/input";
@@ -19,9 +19,20 @@ import hunnaImage from "../../imports/image-15.png";
 import punctualImage from "../../imports/image-18.png";
 import foalsImage from "../../imports/image-20.png";
 
+// Portrait photos for these artists have faces in the upper-center area, not at the very top
+function getArtistImagePosition(artistId: string): string {
+  if (artistId === "24") return "object-[50%_40%]"; // Dua Lipa – tight crop, show mid-face
+  if (["23", "25"].includes(artistId)) return "object-[50%_20%]";
+  return "object-top";
+}
+
 export function Discover() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const selectedGenre = searchParams.get("genre") ?? "All";
+  const setSelectedGenre = (genre: string) =>
+    setSearchParams(genre === "All" ? {} : { genre }, { replace: true });
+
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedGenre, setSelectedGenre] = useState("All");
   const [notificationsEnabled, setNotificationsEnabled] = useState<string[]>([]);
   const [suggestion, setSuggestion] = useState("");
   const [isLoading, setIsLoading] = useState(true);
@@ -134,7 +145,7 @@ export function Discover() {
       </div>
 
       {/* Hero Section */}
-      <div className="relative overflow-hidden rounded-3xl bg-[#242221] p-8 md:p-12 z-10">
+      <div className="relative overflow-hidden rounded-3xl bg-[#242221] p-6 sm:p-8 md:p-12 z-10">
         <div className="absolute inset-0">
           <img
             src={heroBackground}
@@ -146,8 +157,8 @@ export function Discover() {
         </div>
         <GeoArcs className="absolute -bottom-16 -right-16 w-72 text-[#E5381E] pointer-events-none" opacity={0.25} />
         <div className="relative z-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">The echo of one concert</h2>
-          <h3 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#E5381E] to-[#E5381E]/80 mb-4">
+          <h2 className="text-2xl md:text-4xl font-bold text-white mb-2">The echo of one concert</h2>
+          <h3 className="text-2xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#E5381E] to-[#E5381E]/80 mb-4">
             calls to the next
           </h3>
           <p className="text-[#C7C1B6] max-w-xl">
@@ -301,7 +312,7 @@ export function Discover() {
                   <img
                     src={artist.id === "1" ? bmthImage : artist.id === "7" ? architectsImage : artist.id === "8" ? hunnaImage : artist.id === "9" ? punctualImage : artist.id === "10" ? foalsImage : artist.image}
                     alt={artist.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    className={`w-full h-full object-cover ${getArtistImagePosition(artist.id)} group-hover:scale-110 transition-transform duration-300`}
                   />
                   {artist.verified && (
                     <div className="absolute top-2 right-2 bg-[#E5381E] rounded-full p-1">
@@ -370,7 +381,7 @@ export function Discover() {
                       <img
                         src={getEventImage(firstEvent)}
                         alt={firstEvent.artistName}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        className={`w-full h-full object-cover ${getArtistImagePosition(firstEvent.artistId)} group-hover:scale-105 transition-transform duration-500`}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#141111] via-[#141111]/20 to-transparent" />
                       <div

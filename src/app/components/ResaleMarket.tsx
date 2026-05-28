@@ -109,12 +109,12 @@ export function ResaleMarket() {
         <img src={resaleHero} alt="" className="w-full h-full object-cover brightness-[0.45]" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#141111]/80 via-transparent to-[#141111]/60" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#141111]/60 to-transparent" />
-        <div className="absolute inset-0 flex items-center justify-between px-8">
+        <div className="absolute inset-0 flex items-center justify-between px-4 sm:px-8">
           <div className="flex items-start gap-3">
             <div className="w-1 h-12 bg-[#E5381E] rounded-[10px] mt-1" />
             <div>
-              <h2 className="text-3xl font-bold text-white mb-1">Resale Market</h2>
-              <p className="text-[#C7C1B6]">Buy and sell tickets safely within the community</p>
+              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-1">Resale Market</h2>
+              <p className="text-[#C7C1B6] text-sm sm:text-base">Buy and sell tickets safely within the community</p>
             </div>
           </div>
           <Button className="bg-[#E5381E] text-white hover:bg-[#991a0a] hidden md:flex">
@@ -125,18 +125,18 @@ export function ResaleMarket() {
       </div>
 
       {/* Stats strip */}
-      <div className="relative z-10 grid grid-cols-3 gap-4">
-        <Card className="bg-[#141111]/50 border-[#242221] p-4 text-center">
-          <p className="text-2xl font-bold text-white">{totalListings}</p>
-          <p className="text-sm text-[#C7C1B6] mt-0.5">Active Listings</p>
+      <div className="relative z-10 grid grid-cols-3 gap-2 sm:gap-4">
+        <Card className="bg-[#141111]/50 border-[#242221] p-2 sm:p-4 text-center">
+          <p className="text-lg sm:text-2xl font-bold text-white">{totalListings}</p>
+          <p className="text-[10px] sm:text-sm text-[#C7C1B6] mt-0.5">Active Listings</p>
         </Card>
-        <Card className="bg-[#141111]/50 border-[#242221] p-4 text-center">
-          <p className="text-2xl font-bold text-green-400">{dealsCount}</p>
-          <p className="text-sm text-[#C7C1B6] mt-0.5">Below Face Value</p>
+        <Card className="bg-[#141111]/50 border-[#242221] p-2 sm:p-4 text-center">
+          <p className="text-lg sm:text-2xl font-bold text-green-400">{dealsCount}</p>
+          <p className="text-[10px] sm:text-sm text-[#C7C1B6] mt-0.5">Below Face Value</p>
         </Card>
-        <Card className="bg-[#141111]/50 border-[#242221] p-4 text-center">
-          <p className="text-2xl font-bold text-yellow-400">{avgRating.toFixed(1)}</p>
-          <p className="text-sm text-[#C7C1B6] mt-0.5">Avg Seller Rating</p>
+        <Card className="bg-[#141111]/50 border-[#242221] p-2 sm:p-4 text-center">
+          <p className="text-lg sm:text-2xl font-bold text-yellow-400">{avgRating.toFixed(1)}</p>
+          <p className="text-[10px] sm:text-sm text-[#C7C1B6] mt-0.5">Avg Seller Rating</p>
         </Card>
       </div>
 

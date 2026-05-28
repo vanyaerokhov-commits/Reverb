@@ -174,7 +174,7 @@ export function TicketSelection() {
       <div className="relative z-10 flex items-start gap-3">
         <div className="w-1 h-12 bg-[#E5381E] rounded-[10px] mt-1 flex-shrink-0"></div>
         <div>
-          <h2 className="text-3xl font-bold text-white">Select Tickets</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white">Select Tickets</h2>
           <p className="text-[#C7C1B6]">Choose your ticket type and quantity</p>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useParams, Link } from "react-router";
-import { ArrowLeft, MapPin, Calendar, Users, BadgeCheck, Music2 } from "lucide-react";
+import { useParams, Link, useNavigate } from "react-router";
+import { ChevronLeft, MapPin, Calendar, Users, BadgeCheck, Music2 } from "lucide-react";
 import { Card } from "./ui/card";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
@@ -12,6 +12,12 @@ import hunnaImage from "../../imports/image-15.png";
 import punctualImage from "../../imports/image-18.png";
 import foalsImage from "../../imports/image-20.png";
 import geometricPattern from "../../imports/image-10.png";
+
+function getArtistImagePosition(artistId: string): string {
+  if (artistId === "24") return "object-[50%_40%]"; // Dua Lipa – tight crop, show mid-face
+  if (["23", "25"].includes(artistId)) return "object-[50%_20%]";
+  return "object-top";
+}
 
 export function getArtistImage(artistId: string, fallback = "") {
   if (artistId === "1") return bmthImage;
@@ -66,6 +72,7 @@ const BIOS: Record<string, { short: string; long: string; members?: string; home
 
 export function ArtistDetail() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [showAllEvents, setShowAllEvents] = useState(false);
   const artist = mockArtists.find((a) => a.id === id);
 
@@ -101,12 +108,14 @@ export function ArtistDetail() {
       </div>
 
       {/* Back */}
-      <Link to="/events" className="relative z-10 inline-block">
-        <Button variant="ghost" className="text-[#C7C1B6] hover:bg-[#C7C1B6] hover:text-[#E5381E]">
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Back to Events
-        </Button>
-      </Link>
+      <Button
+        variant="ghost"
+        onClick={() => navigate(-1)}
+        className="relative z-10 text-[#C7C1B6] hover:bg-[#C7C1B6] hover:text-[#E5381E]"
+      >
+        <ChevronLeft className="w-4 h-4 mr-2" />
+        Back
+      </Button>
 
       {/* Hero */}
       <Card className="relative z-10 overflow-hidden border-[#242221] bg-[#141111]/50">
@@ -114,7 +123,7 @@ export function ArtistDetail() {
           <img
             src={artistImage}
             alt={artist.name}
-            className="w-full h-full object-cover object-top"
+            className={`w-full h-full object-cover ${getArtistImagePosition(artist.id)}`}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#141111] via-[#141111]/40 to-transparent" />
           <div className="absolute bottom-6 left-6 right-6">
@@ -127,7 +136,7 @@ export function ArtistDetail() {
                 </Badge>
               )}
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-3">{artist.name}</h1>
+            <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white mb-3">{artist.name}</h1>
             <div className="flex flex-wrap items-center gap-5 text-[#C7C1B6] text-sm">
               <span className="flex items-center gap-1.5">
                 <Users className="w-4 h-4" />
@@ -236,7 +245,7 @@ export function ArtistDetail() {
           {/* CTA card */}
           <Card className="bg-gradient-to-br from-[#141111]/50 to-[#242221]/50 border-[#E5381E]/30 p-5">
             <p className="text-[#C7C1B6] text-sm mb-1">Tickets from</p>
-            <p className="text-4xl font-bold text-white mb-4">
+            <p className="text-3xl sm:text-4xl font-bold text-white mb-4">
               {artistEvents.length > 0
                 ? `$${Math.min(...artistEvents.map((e) => e.price))}`
                 : "—"}

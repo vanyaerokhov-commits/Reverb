@@ -186,7 +186,7 @@ export function RoutePlanner() {
       <div className="flex items-start gap-3">
         <div className="w-1 h-12 bg-[#E5381E] rounded-[10px] mt-1"></div>
         <div>
-          <h2 className="text-3xl font-bold text-white mb-1">Route Planner</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-1">Route Planner</h2>
           <p className="text-[#C7C1B6]">
             Plan your perfect music tour across multiple cities
           </p>
@@ -213,24 +213,24 @@ export function RoutePlanner() {
             </div>
             
             {selectedEventDetails.length > 1 && (
-              <div className="grid grid-cols-3 gap-4 text-center">
+              <div className="grid grid-cols-3 gap-2 sm:gap-4 text-center">
                 <div>
-                  <p className="text-2xl font-bold text-white">{totalDistance}</p>
-                  <p className="text-sm text-[#C7C1B6]">Total Distance</p>
+                  <p className="text-lg sm:text-2xl font-bold text-white">{totalDistance}</p>
+                  <p className="text-xs sm:text-sm text-[#C7C1B6]">Total Distance</p>
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-white">
+                  <p className="text-lg sm:text-2xl font-bold text-white">
                     {selectedEventDetails.length}
                   </p>
-                  <p className="text-sm text-[#C7C1B6]">Events</p>
+                  <p className="text-xs sm:text-sm text-[#C7C1B6]">Events</p>
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-white">
+                  <p className="text-lg sm:text-2xl font-bold text-white">
                     {Math.max(0, ...selectedEventDetails.map((e) =>
                       Math.ceil((new Date(e.date).getTime() - new Date(selectedEventDetails[0].date).getTime()) / (1000 * 60 * 60 * 24))
                     ))} days
                   </p>
-                  <p className="text-sm text-[#C7C1B6]">Duration</p>
+                  <p className="text-xs sm:text-sm text-[#C7C1B6]">Duration</p>
                 </div>
               </div>
             )}

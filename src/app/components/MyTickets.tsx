@@ -198,12 +198,12 @@ export function MyTickets() {
         <img src={ticketsHero} alt="" className="w-full h-full object-cover brightness-[0.45] object-top" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#141111]/80 via-transparent to-[#141111]/60" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#141111]/60 to-transparent" />
-        <div className="absolute inset-0 flex items-center justify-between px-8">
+        <div className="absolute inset-0 flex items-center justify-between px-4 sm:px-8">
           <div className="flex items-start gap-3">
-            <div className="w-1 h-12 bg-[#E5381E] rounded-[10px] mt-1"></div>
+            <div className="w-1 h-10 sm:h-12 bg-[#E5381E] rounded-[10px] mt-1"></div>
             <div>
-              <h2 className="text-3xl font-bold text-white mb-1">My Tickets</h2>
-              <p className="text-[#C7C1B6]">All your tickets in one place</p>
+              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-1">My Tickets</h2>
+              <p className="text-sm sm:text-base text-[#C7C1B6]">All your tickets in one place</p>
             </div>
           </div>
         </div>
@@ -351,21 +351,21 @@ export function MyTickets() {
               </p>
 
               {/* Quick stats */}
-              <div className="grid grid-cols-3 gap-4 mb-8">
-                <div className="bg-[#141111]/60 rounded-xl p-3">
-                  <p className="text-2xl font-bold text-white">10+</p>
-                  <p className="text-xs text-[#C7C1B6]">Live listings</p>
+              <div className="grid grid-cols-3 gap-2 sm:gap-4 mb-8">
+                <div className="bg-[#141111]/60 rounded-xl p-2 sm:p-3">
+                  <p className="text-xl sm:text-2xl font-bold text-white">10+</p>
+                  <p className="text-[10px] sm:text-xs text-[#C7C1B6]">Live listings</p>
                 </div>
-                <div className="bg-[#141111]/60 rounded-xl p-3">
-                  <p className="text-2xl font-bold text-green-400">6</p>
-                  <p className="text-xs text-[#C7C1B6]">Below face value</p>
+                <div className="bg-[#141111]/60 rounded-xl p-2 sm:p-3">
+                  <p className="text-xl sm:text-2xl font-bold text-green-400">6</p>
+                  <p className="text-[10px] sm:text-xs text-[#C7C1B6]">Below face value</p>
                 </div>
-                <div className="bg-[#141111]/60 rounded-xl p-3">
+                <div className="bg-[#141111]/60 rounded-xl p-2 sm:p-3">
                   <div className="flex items-center justify-center gap-1">
-                    <TrendingDown className="w-4 h-4 text-green-400" />
-                    <p className="text-2xl font-bold text-green-400">4.7</p>
+                    <TrendingDown className="w-3 h-3 sm:w-4 sm:h-4 text-green-400" />
+                    <p className="text-xl sm:text-2xl font-bold text-green-400">4.7</p>
                   </div>
-                  <p className="text-xs text-[#C7C1B6]">Avg seller rating</p>
+                  <p className="text-[10px] sm:text-xs text-[#C7C1B6]">Avg seller rating</p>
                 </div>
               </div>
 

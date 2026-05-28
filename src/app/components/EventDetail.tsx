@@ -1,5 +1,5 @@
 ﻿import { useState, useEffect, useRef } from "react";
-import { useParams, Link } from "react-router";
+import { useParams, Link, useNavigate } from "react-router";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { MapPin, Calendar, Clock, DollarSign, Share2, Heart, ChevronLeft, Users, Music2, CalendarPlus } from "lucide-react";
@@ -115,8 +115,15 @@ function VenueMap({ venue, city, artistName }: { venue: string; city: string; ar
   return <div ref={mapRef} style={{ width: "100%", height: "280px", borderRadius: "8px" }} />;
 }
 
+function getArtistImagePosition(artistId: string): string {
+  if (artistId === "24") return "object-[50%_40%]"; // Dua Lipa – tight crop, show mid-face
+  if (["23", "25"].includes(artistId)) return "object-[50%_20%]";
+  return "object-top";
+}
+
 export function EventDetail() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const event = mockEvents.find((e) => e.id === id);
   const artist = event ? mockArtists.find((a) => a.id === event.artistId) : null;
   const [isExpanded, setIsExpanded] = useState(false);
@@ -200,23 +207,22 @@ export function EventDetail() {
       </div>
 
       {/* Back Button */}
-      <Link to="/" className="relative z-10 inline-block">
-        <Button
-          variant="ghost"
-          className="text-[#C7C1B6] hover:bg-[#C7C1B6] hover:text-[#E5381E]"
-        >
-          <ChevronLeft className="w-4 h-4 mr-2" />
-          Back to Events
-        </Button>
-      </Link>
+      <Button
+        variant="ghost"
+        onClick={() => navigate(-1)}
+        className="relative z-10 text-[#C7C1B6] hover:bg-[#C7C1B6] hover:text-[#E5381E]"
+      >
+        <ChevronLeft className="w-4 h-4 mr-2" />
+        Back to Discover
+      </Button>
 
       {/* Hero Image */}
       <Card className="relative z-10 overflow-hidden border-[#242221] bg-[#141111]/50">
-        <div className="relative h-96">
+        <div className="relative h-56 sm:h-80 md:h-96">
           <img
             src={event.artistId === "1" ? bmthImage : event.artistId === "7" ? architectsImage : event.artistId === "8" ? hunnaImage : event.artistId === "9" ? punctualImage : event.artistId === "10" ? foalsImage : event.image}
             alt={event.artistName}
-            className="w-full h-full object-cover object-top"
+            className={`w-full h-full object-cover ${getArtistImagePosition(event.artistId)}`}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#141111] via-[#141111]/50 to-transparent"></div>
           <div className="absolute top-4 right-4 flex gap-2">
@@ -241,10 +247,10 @@ export function EventDetail() {
             <Badge className="bg-[#E5381E] text-white border-0 mb-3">
               {event.genre}
             </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white mb-2">
               {event.artistName}
             </h1>
-            <p className="text-xl text-slate-300">
+            <p className="text-sm sm:text-xl text-slate-300">
               {event.venue}, {event.city}
             </p>
           </div>
@@ -1122,7 +1128,7 @@ export function EventDetail() {
           <Card className="bg-gradient-to-br from-[#141111]/50 to-[#242221]/50 border-[#E5381E]/50 p-6 relative overflow-hidden self-start">
             <div className="text-center mb-6 relative z-10">
               <p className="text-sm text-[#C7C1B6] mb-2">Starting from</p>
-              <p className="text-4xl font-bold text-white mb-1">
+              <p className="text-3xl sm:text-4xl font-bold text-white mb-1">
                 ${event.price}
               </p>
               <p className="text-sm text-[#C7C1B6]">+ fees</p>

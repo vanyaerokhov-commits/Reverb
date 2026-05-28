@@ -102,29 +102,41 @@ export function Profile() {
       </div>
 
       {/* Header */}
-      <div className="relative z-10 flex items-center gap-3">
+      <div className="relative z-10 flex items-start gap-3">
         <div className="w-1 h-12 bg-[#E5381E] rounded-[10px] mt-1 flex-shrink-0"></div>
-        <div className="flex-1 flex items-center justify-between flex-wrap gap-4">
-          <div>
-            <h2 className="text-3xl font-bold text-white mb-1">Profile</h2>
-            <p className="text-[#C7C1B6]">Your music journey</p>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="text-right">
-              <div className="flex items-center gap-1.5 justify-end">
-                <p className="text-white font-bold">Music Fan</p>
-                <BadgeCheck className="w-4 h-4 text-[#E5381E]" />
+        <div className="flex-1 min-w-0">
+          <div className="flex items-start justify-between gap-3">
+            {/* Left: title + subtitle + mobile user info */}
+            <div className="min-w-0">
+              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-1">Profile</h2>
+              <p className="text-[#C7C1B6] text-sm sm:text-base">Your music journey</p>
+              {/* Mobile-only user info below subtitle */}
+              <div className="mt-2 sm:hidden">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-white font-semibold text-sm">Music Fan</span>
+                  <BadgeCheck className="w-3.5 h-3.5 text-[#E5381E]" />
+                </div>
+                <p className="text-[#C7C1B6] text-xs mt-0.5">@{OWN_USERNAME} · since Jan 2026</p>
               </div>
-              <p className="text-[#C7C1B6] text-sm">@{OWN_USERNAME} · since Jan 2026</p>
             </div>
-            <Link to={`/user/${OWN_USERNAME}`} className="group relative">
-              <div className="w-14 h-14 bg-[#E5381E] rounded-full flex items-center justify-center flex-shrink-0 group-hover:ring-2 group-hover:ring-[#E5381E]/50 transition-all">
-                <span className="text-xl font-bold text-white">MF</span>
+            {/* Right: desktop info text + avatar */}
+            <div className="flex items-center gap-3 flex-shrink-0">
+              <div className="hidden sm:block text-right">
+                <div className="flex items-center gap-1.5 justify-end">
+                  <p className="text-white font-bold">Music Fan</p>
+                  <BadgeCheck className="w-4 h-4 text-[#E5381E]" />
+                </div>
+                <p className="text-[#C7C1B6] text-sm">@{OWN_USERNAME} · since Jan 2026</p>
               </div>
-              <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-[#141111] border border-[#242221] rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                <ExternalLink className="w-2.5 h-2.5 text-[#C7C1B6]" />
-              </div>
-            </Link>
+              <Link to={`/user/${OWN_USERNAME}`} className="group relative">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-[#E5381E] rounded-full flex items-center justify-center flex-shrink-0 group-hover:ring-2 group-hover:ring-[#E5381E]/50 transition-all">
+                  <span className="text-lg sm:text-xl font-bold text-white">MF</span>
+                </div>
+                <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-[#141111] border border-[#242221] rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <ExternalLink className="w-2.5 h-2.5 text-[#C7C1B6]" />
+                </div>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -216,17 +228,17 @@ export function Profile() {
         </div>
         <Card className="bg-[#141111]/50 border-[#242221] divide-y divide-[#242221]">
           {mockTickets.slice(0, 3).map((ticket) => (
-            <div key={ticket.id} className="p-4 flex items-center gap-4">
-              <div className="w-12 h-12 bg-[#E5381E]/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                <Music className="w-6 h-6 text-[#C7C1B6]" />
+            <div key={ticket.id} className="px-4 py-3 flex items-center gap-3">
+              <div className="w-10 h-10 bg-[#E5381E]/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                <Music className="w-5 h-5 text-[#C7C1B6]" />
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-white font-semibold truncate">{ticket.artistName}</p>
-                <p className="text-sm text-[#C7C1B6]">
+                <p className="text-white font-semibold text-sm leading-tight truncate">{ticket.artistName}</p>
+                <p className="text-xs text-[#C7C1B6] truncate mt-0.5">
                   {new Date(ticket.date).toLocaleDateString("en-US", { month: "short", day: "numeric" })} · {ticket.venue}
                 </p>
               </div>
-              <Badge className={ticket.status === "upcoming" ? "bg-green-600/20 text-green-400 border-green-600/30 flex-shrink-0" : "bg-[#C7C1B6]/20 text-[#C7C1B6] border-[#C7C1B6]/30 flex-shrink-0"}>
+              <Badge className={`flex-shrink-0 text-xs px-2 py-0.5 ${ticket.status === "upcoming" ? "bg-green-600/20 text-green-400 border-green-600/30" : "bg-[#C7C1B6]/20 text-[#C7C1B6] border-[#C7C1B6]/30"}`}>
                 {ticket.status === "upcoming" ? "Upcoming" : "Attended"}
               </Badge>
             </div>
@@ -278,21 +290,21 @@ export function Profile() {
         </div>
 
         {/* Seller stats row */}
-        <div className="grid grid-cols-3 gap-3 mb-4">
-          <Card className="bg-[#141111]/50 border-[#242221] p-4 text-center">
-            <Package className="w-5 h-5 text-[#E5381E] mx-auto mb-1.5" />
-            <p className="text-xl font-bold text-white">{myListings.length}</p>
-            <p className="text-xs text-[#C7C1B6] mt-0.5">Active listings</p>
+        <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-4">
+          <Card className="bg-[#141111]/50 border-[#242221] p-2 sm:p-4 text-center">
+            <Package className="w-4 h-4 sm:w-5 sm:h-5 text-[#E5381E] mx-auto mb-1" />
+            <p className="text-base sm:text-xl font-bold text-white">{myListings.length}</p>
+            <p className="text-[10px] sm:text-xs text-[#C7C1B6] mt-0.5">Active listings</p>
           </Card>
-          <Card className="bg-[#141111]/50 border-[#242221] p-4 text-center">
-            <Trophy className="w-5 h-5 text-yellow-400 mx-auto mb-1.5" />
-            <p className="text-xl font-bold text-white">3</p>
-            <p className="text-xs text-[#C7C1B6] mt-0.5">Completed sales</p>
+          <Card className="bg-[#141111]/50 border-[#242221] p-2 sm:p-4 text-center">
+            <Trophy className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 mx-auto mb-1" />
+            <p className="text-base sm:text-xl font-bold text-white">3</p>
+            <p className="text-[10px] sm:text-xs text-[#C7C1B6] mt-0.5">Completed sales</p>
           </Card>
-          <Card className="bg-[#141111]/50 border-[#242221] p-4 text-center">
-            <ThumbsUp className="w-5 h-5 text-green-400 mx-auto mb-1.5" />
-            <p className="text-xl font-bold text-white">{positivePct}%</p>
-            <p className="text-xs text-[#C7C1B6] mt-0.5">Positive reviews</p>
+          <Card className="bg-[#141111]/50 border-[#242221] p-2 sm:p-4 text-center">
+            <ThumbsUp className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 mx-auto mb-1" />
+            <p className="text-base sm:text-xl font-bold text-white">{positivePct}%</p>
+            <p className="text-[10px] sm:text-xs text-[#C7C1B6] mt-0.5">Positive reviews</p>
           </Card>
         </div>
 

@@ -127,7 +127,7 @@ export function GlobalSearch({ isOpen, onClose }: Props) {
       />
 
       {/* Search panel */}
-      <div className="fixed top-16 left-1/2 -translate-x-1/2 w-full max-w-2xl z-[70] px-4">
+      <div className="fixed top-[73px] left-1/2 -translate-x-1/2 w-full max-w-2xl z-[70] px-4">
         <div className="bg-[#1a1817] border border-[#242221] rounded-2xl shadow-2xl overflow-hidden">
           {/* Input row */}
           <div className="flex items-center gap-3 px-5 py-4 border-b border-[#242221]">

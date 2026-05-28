@@ -111,12 +111,12 @@ export function Events() {
       <div className="relative z-10 overflow-hidden rounded-2xl h-40 md:h-52">
         <img src={eventsHero} alt="" className="w-full h-full object-cover brightness-[0.5]" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#141111]/80 via-transparent to-[#141111]/60" />
-        <div className="absolute inset-0 flex items-center px-8">
+        <div className="absolute inset-0 flex items-center px-4 sm:px-8">
           <div className="flex items-start gap-3">
-            <div className="w-1 h-12 bg-[#E5381E] rounded-[10px]"></div>
+            <div className="w-1 h-10 sm:h-12 bg-[#E5381E] rounded-[10px]"></div>
             <div>
-              <h2 className="text-3xl font-bold text-white mb-1">Events Calendar</h2>
-              <p className="text-[#C7C1B6]">Plan your music journey</p>
+              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-1">Events Calendar</h2>
+              <p className="text-sm sm:text-base text-[#C7C1B6]">Plan your music journey</p>
             </div>
           </div>
         </div>
@@ -183,17 +183,18 @@ export function Events() {
       {/* Calendar View */}
       {viewMode === "calendar" && (
         <Card className="relative z-10 bg-[#141111]/50 border-[#242221] p-4 md:p-6">
-          <div className="grid grid-cols-7 gap-2 mb-4">
+          <div className="grid grid-cols-7 gap-1 sm:gap-2 mb-4">
             {weekDays.map((day) => (
               <div
                 key={day}
-                className="text-center text-sm font-semibold text-[#C7C1B6] py-2"
+                className="text-center text-xs sm:text-sm font-semibold text-[#C7C1B6] py-2"
               >
-                {day}
+                <span className="hidden sm:inline">{day}</span>
+                <span className="sm:hidden">{day[0]}</span>
               </div>
             ))}
           </div>
-          <div className="grid grid-cols-7 gap-2">
+          <div className="grid grid-cols-7 gap-1 sm:gap-2">
             {days.map((day, index) => {
               if (day === null) {
                 return <div key={`empty-${index}`} className="aspect-square" />;

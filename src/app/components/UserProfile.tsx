@@ -260,9 +260,9 @@ export function UserProfile() {
 
       {/* Back */}
       <div className="relative z-10">
-        <button onClick={() => navigate(-1)} className="inline-flex items-center gap-1.5 text-[#C7C1B6] hover:text-white transition-colors text-sm">
-          <ChevronLeft className="w-4 h-4" />Back
-        </button>
+        <Button variant="ghost" onClick={() => navigate(-1)} className="text-[#C7C1B6] hover:bg-[#C7C1B6] hover:text-[#E5381E]">
+          <ChevronLeft className="w-4 h-4 mr-2" />Back
+        </Button>
       </div>
 
       {/* ── PROFILE HERO ── */}
@@ -340,21 +340,21 @@ export function UserProfile() {
       </div>
 
       {/* ── SELLER STATS ── */}
-      <div className="relative z-10 grid grid-cols-3 gap-3 sm:gap-4">
-        <Card className="bg-[#141111]/50 border-[#242221] p-4 text-center">
-          <Package className="w-5 h-5 text-[#E5381E] mx-auto mb-1.5" />
-          <p className="text-xl font-bold text-white">{userListings.length}</p>
-          <p className="text-xs text-[#C7C1B6] mt-0.5">Active listings</p>
+      <div className="relative z-10 grid grid-cols-3 gap-2 sm:gap-4">
+        <Card className="bg-[#141111]/50 border-[#242221] p-2 sm:p-4 text-center">
+          <Package className="w-4 h-4 sm:w-5 sm:h-5 text-[#E5381E] mx-auto mb-1" />
+          <p className="text-base sm:text-xl font-bold text-white">{userListings.length}</p>
+          <p className="text-[10px] sm:text-xs text-[#C7C1B6] mt-0.5">Active listings</p>
         </Card>
-        <Card className="bg-[#141111]/50 border-[#242221] p-4 text-center">
-          <Trophy className="w-5 h-5 text-yellow-400 mx-auto mb-1.5" />
-          <p className="text-xl font-bold text-white">{user.salesCount}</p>
-          <p className="text-xs text-[#C7C1B6] mt-0.5">Completed sales</p>
+        <Card className="bg-[#141111]/50 border-[#242221] p-2 sm:p-4 text-center">
+          <Trophy className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 mx-auto mb-1" />
+          <p className="text-base sm:text-xl font-bold text-white">{user.salesCount}</p>
+          <p className="text-[10px] sm:text-xs text-[#C7C1B6] mt-0.5">Completed sales</p>
         </Card>
-        <Card className="bg-[#141111]/50 border-[#242221] p-4 text-center">
-          <ThumbsUp className="w-5 h-5 text-green-400 mx-auto mb-1.5" />
-          <p className="text-xl font-bold text-white">{positivePct}%</p>
-          <p className="text-xs text-[#C7C1B6] mt-0.5">Positive reviews</p>
+        <Card className="bg-[#141111]/50 border-[#242221] p-2 sm:p-4 text-center">
+          <ThumbsUp className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 mx-auto mb-1" />
+          <p className="text-base sm:text-xl font-bold text-white">{positivePct}%</p>
+          <p className="text-[10px] sm:text-xs text-[#C7C1B6] mt-0.5">Positive reviews</p>
         </Card>
       </div>
 

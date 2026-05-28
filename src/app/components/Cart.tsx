@@ -50,7 +50,7 @@ export function Cart() {
         <div className="w-1 h-12 bg-[#E5381E] rounded-[10px] mt-1 flex-shrink-0"></div>
         <div className="flex-1 flex items-center justify-between flex-wrap gap-3">
           <div>
-            <h2 className="text-3xl font-bold text-white mb-1">Your Cart</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-1">Your Cart</h2>
             <p className="text-[#C7C1B6]">
               {totalItems} {totalItems === 1 ? "ticket" : "tickets"} selected
             </p>
