@@ -225,8 +225,8 @@ export function Cart() {
           </div>
 
           {/* Order summary */}
-          <div>
-            <Card className="bg-gradient-to-br from-[#141111]/50 to-[#242221]/50 border-[#E5381E]/30 p-6 sticky top-24">
+          <div className="min-w-0">
+            <Card className="bg-gradient-to-br from-[#141111]/50 to-[#242221]/50 border-[#E5381E]/30 p-6 sticky top-24 overflow-hidden">
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-1 h-6 bg-[#E5381E] rounded-[10px]"></div>
                 <h3 className="text-lg font-bold text-white">Order Summary</h3>
