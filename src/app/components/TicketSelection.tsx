@@ -192,8 +192,9 @@ export function TicketSelection() {
                   : "bg-[#141111]/30 border-[#242221]/50 opacity-50"
               }`}
             >
-              <div className="flex flex-col md:flex-row md:items-center gap-4">
-                <div className="flex-1">
+              <div className="flex flex-col gap-3">
+                {/* Top: name + description + capacity */}
+                <div>
                   <div className="flex items-center gap-2 mb-1">
                     <h3 className="text-xl font-bold text-white">{tier.name}</h3>
                     {!tier.available && (
@@ -209,34 +210,35 @@ export function TicketSelection() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4 flex-shrink-0">
-                  <div className="text-right">
+                {/* Bottom: price left, controls right */}
+                <div className="flex items-center justify-between gap-2">
+                  <div>
                     <p className="text-2xl font-bold text-white">${tier.price}</p>
                     <p className="text-xs text-[#C7C1B6]">per ticket</p>
                   </div>
 
                   {tier.available && (
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 flex-shrink-0">
                       <div className="flex items-center border border-[#242221] rounded-lg overflow-hidden">
                         <button
                           onClick={() => setQty(tier.id, getQty(tier.id) - 1)}
-                          className="w-9 h-9 flex items-center justify-center text-[#C7C1B6] hover:bg-[#E5381E]/20 hover:text-white transition-colors"
+                          className="w-8 h-9 flex items-center justify-center text-[#C7C1B6] hover:bg-[#E5381E]/20 hover:text-white transition-colors"
                         >
                           <Minus className="w-4 h-4" />
                         </button>
-                        <span className="w-10 text-center text-white font-semibold text-sm">
+                        <span className="w-8 text-center text-white font-semibold text-sm">
                           {getQty(tier.id)}
                         </span>
                         <button
                           onClick={() => setQty(tier.id, getQty(tier.id) + 1)}
-                          className="w-9 h-9 flex items-center justify-center text-[#C7C1B6] hover:bg-[#E5381E]/20 hover:text-white transition-colors"
+                          className="w-8 h-9 flex items-center justify-center text-[#C7C1B6] hover:bg-[#E5381E]/20 hover:text-white transition-colors"
                         >
                           <Plus className="w-4 h-4" />
                         </button>
                       </div>
                       <Button
                         onClick={() => handleAddToCart(tier)}
-                        className={`transition-all min-w-[130px] ${
+                        className={`transition-all ${
                           justAdded === tier.id
                             ? "bg-green-600 hover:bg-green-600 text-white"
                             : "bg-[#E5381E] hover:bg-[#991a0a] text-white"
@@ -244,13 +246,13 @@ export function TicketSelection() {
                       >
                         {justAdded === tier.id ? (
                           <>
-                            <CheckCircle2 className="w-4 h-4 mr-2" />
-                            Added!
+                            <CheckCircle2 className="w-4 h-4 mr-1 sm:mr-2" />
+                            <span>Added!</span>
                           </>
                         ) : (
                           <>
-                            <ShoppingCart className="w-4 h-4 mr-2" />
-                            Add to Cart
+                            <ShoppingCart className="w-4 h-4 mr-1 sm:mr-2" />
+                            <span>Add to Cart</span>
                           </>
                         )}
                       </Button>
