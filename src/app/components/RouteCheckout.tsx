@@ -355,14 +355,14 @@ export function RouteCheckout() {
       </div>
 
       {/* Action buttons */}
-      <div className="relative z-10 flex gap-3">
+      <div className="relative z-10 flex gap-2">
         {step > 0 && (
           <Button
             variant="outline"
             size="icon"
             onClick={goBack}
             title="Back"
-            className="h-12 w-12 flex-shrink-0 bg-transparent border-[#242221] text-[#C7C1B6] hover:bg-[#242221] hover:text-white"
+            className="h-12 w-10 flex-shrink-0 bg-transparent border-[#242221] text-[#C7C1B6] hover:bg-[#242221] hover:text-white"
           >
             <ChevronLeft className="w-5 h-5" />
           </Button>
@@ -372,7 +372,7 @@ export function RouteCheckout() {
           size="icon"
           onClick={() => advance(false)}
           title="Skip"
-          className="h-12 w-12 flex-shrink-0 bg-transparent border-[#242221] text-[#C7C1B6] hover:bg-[#242221] hover:text-white"
+          className="h-12 w-10 flex-shrink-0 bg-transparent border-[#242221] text-[#C7C1B6] hover:bg-[#242221] hover:text-white"
         >
           <SkipForward className="w-5 h-5" />
         </Button>
