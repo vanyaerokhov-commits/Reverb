@@ -182,7 +182,7 @@ export function TicketSelection() {
       {/* Tiers + sidebar */}
       <div className="relative z-10 grid lg:grid-cols-3 gap-6">
         {/* Tier cards */}
-        <div className="lg:col-span-2 space-y-4">
+        <div className="lg:col-span-2 space-y-4 min-w-0">
           {tiers.map((tier) => (
             <Card
               key={tier.id}

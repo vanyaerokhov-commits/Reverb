@@ -259,7 +259,7 @@ export function EventDetail() {
 
       <div className="relative z-10 grid lg:grid-cols-3 gap-6">
         {/* Main Content */}
-        <div className="lg:col-span-2 space-y-6">
+        <div className="lg:col-span-2 space-y-6 min-w-0">
           {/* Event Info */}
           <Card className="bg-[#141111]/50 border-[#242221] p-6 relative">
             <div className="flex items-center gap-3 mb-6">

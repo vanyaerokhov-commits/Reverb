@@ -195,7 +195,7 @@ export function RoutePlanner() {
 
       <div className="relative z-10 grid lg:grid-cols-3 gap-6">
         {/* Main Content - Route Map & Details */}
-        <div className="lg:col-span-2 space-y-6">
+        <div className="lg:col-span-2 space-y-6 min-w-0">
           {/* Map Placeholder */}
           <Card className="bg-[#141111]/50 border-[#242221] p-6">
             <div className="aspect-video bg-[#242221] rounded-lg overflow-hidden mb-4">

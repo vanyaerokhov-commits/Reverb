@@ -157,7 +157,7 @@ export function ArtistDetail() {
 
       <div className="relative z-10 grid lg:grid-cols-3 gap-6">
         {/* Main */}
-        <div className="lg:col-span-2 space-y-6">
+        <div className="lg:col-span-2 space-y-6 min-w-0">
           {/* Bio */}
           <Card className="bg-[#141111]/50 border-[#242221] p-6">
             <div className="flex items-center gap-3 mb-4">

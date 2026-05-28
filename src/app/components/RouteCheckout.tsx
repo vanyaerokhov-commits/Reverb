@@ -236,7 +236,7 @@ export function RouteCheckout() {
 
       {/* Ticket selection */}
       <div className="relative z-10 grid lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2">
+        <div className="lg:col-span-2 min-w-0">
           <Card className="bg-[#141111]/50 border-[#242221] p-6">
             <div className="flex items-center gap-2 mb-5">
               <div className="w-1 h-6 bg-[#E5381E] rounded-[10px]"></div>
