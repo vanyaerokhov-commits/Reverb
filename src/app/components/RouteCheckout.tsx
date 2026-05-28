@@ -72,7 +72,10 @@ export function RouteCheckout() {
       <div className="text-center py-12">
         <p className="text-[#C7C1B6] text-lg mb-4">No events selected.</p>
         <Link to="/route-planner">
-          <Button className="bg-[#E5381E] text-white">Back to Route Planner</Button>
+          <Button variant="ghost" className="text-[#C7C1B6] hover:bg-[#C7C1B6] hover:text-[#E5381E]">
+            <ChevronLeft className="w-4 h-4 mr-2" />
+            Back to Route Planner
+          </Button>
         </Link>
       </div>
     );

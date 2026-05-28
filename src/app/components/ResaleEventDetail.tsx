@@ -218,12 +218,11 @@ export function ResaleEventDetail() {
 
       {/* Back link */}
       <div className="relative z-10">
-        <Link
-          to="/resale"
-          className="inline-flex items-center gap-1.5 text-[#C7C1B6] hover:text-white transition-colors text-sm"
-        >
-          <ChevronLeft className="w-4 h-4" />
-          Back to Resale Market
+        <Link to="/resale" className="inline-block">
+          <Button variant="ghost" className="text-[#C7C1B6] hover:bg-[#C7C1B6] hover:text-[#E5381E]">
+            <ChevronLeft className="w-4 h-4 mr-2" />
+            Back to Resale Market
+          </Button>
         </Link>
       </div>
 
