@@ -69,7 +69,7 @@ export function Cart() {
 
       {confirmed ? (
         /* ── Order Confirmation Screen ── */
-        <Card className="relative z-10 bg-[#141111]/50 border-[#242221] p-12 text-center">
+        <Card className="relative z-10 bg-[#141111]/50 border-[#242221] p-5 sm:p-8 md:p-12 text-center">
           <div className="max-w-md mx-auto">
             <div className="w-24 h-24 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
               <CheckCircle className="w-12 h-12 text-green-400" />
