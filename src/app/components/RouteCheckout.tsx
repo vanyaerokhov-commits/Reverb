@@ -359,20 +359,22 @@ export function RouteCheckout() {
         {step > 0 && (
           <Button
             variant="outline"
+            size="icon"
             onClick={goBack}
-            className="h-12 bg-transparent border-[#242221] text-[#C7C1B6] hover:bg-[#242221] hover:text-white px-4"
+            title="Back"
+            className="h-12 w-12 flex-shrink-0 bg-transparent border-[#242221] text-[#C7C1B6] hover:bg-[#242221] hover:text-white"
           >
-            <ChevronLeft className="w-4 h-4 mr-1" />
-            Back
+            <ChevronLeft className="w-5 h-5" />
           </Button>
         )}
         <Button
           variant="outline"
+          size="icon"
           onClick={() => advance(false)}
-          className="h-12 bg-transparent border-[#242221] text-[#C7C1B6] hover:bg-[#242221] hover:text-white px-4"
+          title="Skip"
+          className="h-12 w-12 flex-shrink-0 bg-transparent border-[#242221] text-[#C7C1B6] hover:bg-[#242221] hover:text-white"
         >
-          <SkipForward className="w-4 h-4 mr-2" />
-          Skip
+          <SkipForward className="w-5 h-5" />
         </Button>
         <Button
           className="flex-1 h-12 bg-[#E5381E] text-white hover:bg-[#991a0a] text-base font-semibold"
