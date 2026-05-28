@@ -397,7 +397,7 @@ export function UserProfile() {
                   <span className="text-white">{genre}</span>
                   <span className="text-[#C7C1B6]">{pct}%</span>
                 </div>
-                <Progress value={pct} className="h-2" />
+                <Progress value={pct} className="h-2 bg-[#C7C1B6]/20 [&>div]:bg-[#C7C1B6]" />
               </div>
             ))}
           </div>
