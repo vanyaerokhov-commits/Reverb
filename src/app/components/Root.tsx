@@ -10,7 +10,7 @@ function ScrollToTop() {
 }
 import { Music, Ticket, Calendar, User, Route, ChevronLeft, ChevronRight, ShoppingCart, Tag, Search } from "lucide-react";
 import { Button } from "./ui/button";
-import reverbLogo from "../../imports/лого_цвет_2_.png";
+import reverbLogo from "../../imports/лого цвет 2 .png";
 import { useCart } from "../context/CartContext";
 import { GlobalSearch } from "./GlobalSearch";
 
