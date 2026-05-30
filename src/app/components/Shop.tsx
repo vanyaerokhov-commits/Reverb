@@ -15,13 +15,13 @@ function ProductCard({ product }: { product: (typeof SHOP_PRODUCTS)[0] }) {
 
   return (
     <Link to={`/shop/${product.id}`}>
-      <Card className="bg-[#141111]/50 border-[#242221] overflow-hidden group hover:border-[#E5381E]/40 transition-all duration-300 cursor-pointer h-full">
+      <Card className="bg-[#141111]/50 border-[#242221] overflow-hidden group hover:border-[#E5381E]/40 transition-colors cursor-pointer h-full">
         {/* Image */}
         <div className={`relative overflow-hidden ${isPosters ? "aspect-[2/3]" : "aspect-[4/3]"}`}>
           <img
             src={product.images[0]}
             alt={product.name}
-            className={`w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500`}
+            className={`w-full h-full object-cover object-center transform-gpu group-hover:scale-[1.04] transition-transform duration-300 ease-out`}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#141111]/70 via-transparent to-transparent" />
 
@@ -40,7 +40,7 @@ function ProductCard({ product }: { product: (typeof SHOP_PRODUCTS)[0] }) {
           )}
 
           {/* Hover hint */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-150">
             <span className="bg-[#141111]/80 text-white text-xs font-semibold px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/10">
               View product →
             </span>
@@ -55,7 +55,7 @@ function ProductCard({ product }: { product: (typeof SHOP_PRODUCTS)[0] }) {
 
         {/* Info */}
         <div className="p-3 sm:p-4">
-          <h3 className="text-white font-bold text-sm leading-tight mb-0.5 line-clamp-2 group-hover:text-[#E5381E] transition-colors">
+          <h3 className="text-white font-bold text-sm leading-tight mb-0.5 line-clamp-2 group-hover:text-[#E5381E] transition-colors duration-150">
             {product.name}
           </h3>
           <p className="text-[#C7C1B6] text-xs mb-2">{product.subtitle}</p>
@@ -112,7 +112,7 @@ export function Shop() {
           <img
             src={merchHoodie}
             alt="Reverb Hoodie"
-            className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+            className="w-full h-full object-cover object-center transform-gpu group-hover:scale-[1.03] transition-transform duration-300 ease-out"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#141111]/90 via-[#141111]/50 to-transparent" />
           <div className="absolute inset-0 flex flex-col justify-center px-6 sm:px-10">
