@@ -21,7 +21,7 @@ function ProductCard({ product }: { product: (typeof SHOP_PRODUCTS)[0] }) {
           <img
             src={product.images[0]}
             alt={product.name}
-            className={`w-full h-full object-cover object-center will-change-transform transform-gpu group-hover:scale-[1.04] transition-transform duration-300 ease-out`}
+            className={`w-full h-full object-cover object-center transform-gpu group-hover:scale-[1.04] transition-transform duration-300 ease-out`}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#141111]/70 via-transparent to-transparent" />
 
@@ -112,7 +112,7 @@ export function Shop() {
           <img
             src={merchHoodie}
             alt="Reverb Hoodie"
-            className="w-full h-full object-cover object-center will-change-transform transform-gpu group-hover:scale-[1.03] transition-transform duration-300 ease-out"
+            className="w-full h-full object-cover object-center transform-gpu group-hover:scale-[1.03] transition-transform duration-300 ease-out"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#141111]/90 via-[#141111]/50 to-transparent" />
           <div className="absolute inset-0 flex flex-col justify-center px-6 sm:px-10">
