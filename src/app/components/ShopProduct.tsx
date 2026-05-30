@@ -138,7 +138,7 @@ export const SHOP_PRODUCTS: ProductData[] = [
       "The official Reverb brand poster — a collector's piece featuring the Reverb identity in an abstract geometric composition. Larger A2 format for a bold statement on any wall. Printed on 300gsm heavyweight matte stock.",
     category: "Posters",
     price: 20,
-    images: [posterReverb, posterReverbDesign],
+    images: [posterReverbDesign, posterReverb],
     details: [
       "A2 format (420 × 594 mm)",
       "300gsm premium matte paper",
