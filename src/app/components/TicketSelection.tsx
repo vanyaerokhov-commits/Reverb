@@ -76,11 +76,13 @@ export function TicketSelection() {
     },
   ];
 
-  const getQty = (tierId: string) => quantities[tierId] ?? 1;
+  const getQty = (tierId: string) => quantities[tierId] ?? 0;
   const setQty = (tierId: string, value: number) =>
-    setQuantities((prev) => ({ ...prev, [tierId]: Math.max(1, Math.min(10, value)) }));
+    setQuantities((prev) => ({ ...prev, [tierId]: Math.max(0, Math.min(10, value)) }));
 
   const handleAddToCart = (tier: (typeof tiers)[0]) => {
+    const qty = getQty(tier.id);
+    if (qty === 0) return;
     addItem({
       eventId: event.id,
       artistName: event.artistName,
@@ -90,16 +92,15 @@ export function TicketSelection() {
       time: event.time,
       tier: tier.name,
       price: tier.price,
-      quantity: getQty(tier.id),
+      quantity: qty,
       image: eventImage,
     });
     setJustAdded(tier.id);
     setTimeout(() => setJustAdded(null), 2000);
   };
 
-  const selectionSubtotal = tiers
-    .filter((t) => t.available)
-    .reduce((sum, t) => sum + t.price * getQty(t.id), 0);
+  const selectedTiers = tiers.filter((t) => t.available && getQty(t.id) > 0);
+  const selectionSubtotal = selectedTiers.reduce((sum, t) => sum + t.price * getQty(t.id), 0);
 
   return (
     <div className="relative space-y-6">
@@ -238,9 +239,12 @@ export function TicketSelection() {
                       </div>
                       <Button
                         onClick={() => handleAddToCart(tier)}
+                        disabled={getQty(tier.id) === 0}
                         className={`transition-all px-3 sm:px-4 ${
                           justAdded === tier.id
                             ? "bg-green-600 hover:bg-green-600 text-white"
+                            : getQty(tier.id) === 0
+                            ? "bg-[#242221] text-[#C7C1B6] cursor-not-allowed"
                             : "bg-[#E5381E] hover:bg-[#991a0a] text-white"
                         }`}
                       >
@@ -281,9 +285,12 @@ export function TicketSelection() {
             </div>
 
             <div className="space-y-3 mb-4 min-h-[60px]">
-              {tiers
-                .filter((t) => t.available)
-                .map((tier) => (
+              {selectedTiers.length === 0 ? (
+                <p className="text-[#C7C1B6] text-sm text-center py-3">
+                  No tickets selected yet
+                </p>
+              ) : (
+                selectedTiers.map((tier) => (
                   <div key={tier.id} className="flex justify-between items-center">
                     <div>
                       <p className="text-white text-sm font-semibold">{tier.name}</p>
@@ -293,12 +300,15 @@ export function TicketSelection() {
                       ${(tier.price * getQty(tier.id)).toFixed(2)}
                     </p>
                   </div>
-                ))}
+                ))
+              )}
             </div>
 
             <div className="border-t border-[#242221] pt-3 flex justify-between items-center mb-4">
               <p className="text-[#C7C1B6] text-sm">Subtotal</p>
-              <p className="text-white font-bold text-lg">${selectionSubtotal.toFixed(2)}</p>
+              <p className="text-white font-bold text-lg">
+                {selectionSubtotal > 0 ? `$${selectionSubtotal.toFixed(2)}` : "—"}
+              </p>
             </div>
 
             <Button
