@@ -89,12 +89,59 @@ export function Root() {
         </div>
       </header>
 
-      {/* Main Content */}
-      <main className={`max-w-7xl mx-auto px-4 py-6 pb-24 transition-[padding-left] duration-300 ease-in-out ${
-        isSidebarOpen ? "lg:pl-72" : "lg:pl-24"
-      }`}>
-        <Outlet />
-      </main>
+      {/* Body: sidebar + content side by side on desktop */}
+      <div className="flex">
+
+        {/* Side Navigation - Desktop (sticky, in-flow) */}
+        <nav className={`hidden lg:flex flex-col flex-shrink-0 sticky top-[73px] h-[calc(100vh-73px)] border-r border-[#141111] bg-[#141111]/50 backdrop-blur-xl overflow-hidden transition-[width] duration-300 ease-in-out z-40 ${
+          isSidebarOpen ? "w-64" : "w-20"
+        }`}>
+          <div className="p-4 flex flex-col gap-2">
+            {/* Toggle Button */}
+            <Button
+              onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+              variant="ghost"
+              size="icon"
+              className={`text-[#C7C1B6] hover:text-white hover:bg-[#E5381E]/20 mb-2 ${
+                isSidebarOpen ? "ml-auto" : "mx-auto"
+              }`}
+            >
+              {isSidebarOpen ? (
+                <ChevronLeft className="w-5 h-5" />
+              ) : (
+                <ChevronRight className="w-5 h-5" />
+              )}
+            </Button>
+
+            {navItems.map(({ path, icon: Icon, label }) => {
+              const isActive = path === "/" ? location.pathname === "/" : location.pathname === path || location.pathname.startsWith(path + "/");
+              return (
+                <Link
+                  key={path}
+                  to={path}
+                  className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-colors ${
+                    isActive
+                      ? "text-white bg-[#E5381E]"
+                      : "text-[#C7C1B6] hover:text-white hover:bg-[#E5381E]/20"
+                  } ${!isSidebarOpen ? "justify-center" : ""}`}
+                  title={!isSidebarOpen ? label : undefined}
+                >
+                  <Icon className="w-5 h-5 flex-shrink-0" />
+                  {isSidebarOpen && <span className="font-medium">{label}</span>}
+                </Link>
+              );
+            })}
+          </div>
+        </nav>
+
+        {/* Main Content */}
+        <main className="flex-1 min-w-0 px-4 py-6 pb-24">
+          <div className="max-w-5xl mx-auto">
+            <Outlet />
+          </div>
+        </main>
+
+      </div>
 
       {/* Bottom Navigation - Mobile */}
       <nav className="fixed bottom-0 left-0 right-0 bg-[#242221]/95 backdrop-blur-xl border-t border-[#141111] lg:hidden z-50">
@@ -105,7 +152,7 @@ export function Root() {
               <Link
                 key={path}
                 to={path}
-                className={`flex flex-col items-center gap-0.5 px-2 py-1.5 rounded-lg transition-all ${
+                className={`flex flex-col items-center gap-0.5 px-2 py-1.5 rounded-lg transition-colors ${
                   isActive
                     ? "text-[#E5381E] bg-[#141111]/50"
                     : "text-[#C7C1B6] hover:text-[#E5381E]"
@@ -113,48 +160,6 @@ export function Root() {
               >
                 <Icon className="w-5 h-5" />
                 <span className="text-[10px] font-medium leading-tight">{label}</span>
-              </Link>
-            );
-          })}
-        </div>
-      </nav>
-
-      {/* Side Navigation - Desktop */}
-      <nav className={`hidden lg:block fixed left-0 top-[73px] bottom-0 border-r border-[#141111] bg-[#141111]/50 backdrop-blur-xl transform-gpu transition-[width] duration-300 ease-in-out z-40 ${
-        isSidebarOpen ? "w-64" : "w-20"
-      }`}>
-        <div className="p-6 space-y-2">
-          {/* Toggle Button */}
-          <Button
-            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-            variant="ghost"
-            size="icon"
-            className={`text-[#C7C1B6] hover:text-white hover:bg-[#E5381E]/20 mb-4 ${
-              isSidebarOpen ? "ml-auto" : "mx-auto"
-            }`}
-          >
-            {isSidebarOpen ? (
-              <ChevronLeft className="w-5 h-5" />
-            ) : (
-              <ChevronRight className="w-5 h-5" />
-            )}
-          </Button>
-
-          {navItems.map(({ path, icon: Icon, label }) => {
-            const isActive = path === "/" ? location.pathname === "/" : location.pathname === path || location.pathname.startsWith(path + "/");
-            return (
-              <Link
-                key={path}
-                to={path}
-                className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${
-                  isActive
-                    ? "text-white bg-[#E5381E]"
-                    : "text-[#C7C1B6] hover:text-white hover:bg-[#E5381E]/20"
-                } ${!isSidebarOpen ? "justify-center" : ""}`}
-                title={!isSidebarOpen ? label : undefined}
-              >
-                <Icon className="w-5 h-5 flex-shrink-0" />
-                {isSidebarOpen && <span className="font-medium">{label}</span>}
               </Link>
             );
           })}
