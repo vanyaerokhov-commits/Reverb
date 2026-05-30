@@ -90,7 +90,7 @@ export function Root() {
       </header>
 
       {/* Main Content */}
-      <main className={`max-w-7xl mx-auto px-4 py-6 pb-24 transition-all duration-300 ${
+      <main className={`max-w-7xl mx-auto px-4 py-6 pb-24 transition-[padding-left] duration-300 ease-in-out ${
         isSidebarOpen ? "lg:pl-72" : "lg:pl-24"
       }`}>
         <Outlet />
@@ -120,7 +120,7 @@ export function Root() {
       </nav>
 
       {/* Side Navigation - Desktop */}
-      <nav className={`hidden lg:block fixed left-0 top-[73px] bottom-0 border-r border-[#141111] bg-[#141111]/50 backdrop-blur-xl transition-all duration-300 z-40 ${
+      <nav className={`hidden lg:block fixed left-0 top-[73px] bottom-0 border-r border-[#141111] bg-[#141111]/50 backdrop-blur-xl transform-gpu transition-[width] duration-300 ease-in-out z-40 ${
         isSidebarOpen ? "w-64" : "w-20"
       }`}>
         <div className="p-6 space-y-2">
