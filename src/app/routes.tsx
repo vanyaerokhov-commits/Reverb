@@ -13,6 +13,7 @@ import { ResaleMarket } from "./components/ResaleMarket";
 import { ResaleEventDetail } from "./components/ResaleEventDetail";
 import { UserProfile } from "./components/UserProfile";
 import { ArtistDetail } from "./components/ArtistDetail";
+import { Shop } from "./components/Shop";
 
 export const router = createBrowserRouter([
   {
@@ -32,6 +33,7 @@ export const router = createBrowserRouter([
       { path: "cart", Component: Cart },
       { path: "route-planner", Component: RoutePlanner },
       { path: "route-checkout", Component: RouteCheckout },
+      { path: "shop", Component: Shop },
     ],
   },
 ]);

@@ -8,7 +8,7 @@ function ScrollToTop() {
   }, [pathname]);
   return null;
 }
-import { Music, Ticket, Calendar, User, Route, ChevronLeft, ChevronRight, ShoppingCart, Tag, Search } from "lucide-react";
+import { Music, Ticket, Calendar, User, Route, ChevronLeft, ChevronRight, ShoppingCart, Tag, Search, ShoppingBag } from "lucide-react";
 import { Button } from "./ui/button";
 import reverbLogo from "../../imports/лого цвет 2 .png";
 import { useCart } from "../context/CartContext";
@@ -37,6 +37,7 @@ export function Root() {
     { path: "/tickets", icon: Ticket, label: "Tickets" },
     { path: "/events", icon: Calendar, label: "Events" },
     { path: "/resale", icon: Tag, label: "Resale" },
+    { path: "/shop", icon: ShoppingBag, label: "Shop" },
     { path: "/profile", icon: User, label: "Profile" },
   ];
 
@@ -97,21 +98,21 @@ export function Root() {
 
       {/* Bottom Navigation - Mobile */}
       <nav className="fixed bottom-0 left-0 right-0 bg-[#242221]/95 backdrop-blur-xl border-t border-[#141111] lg:hidden z-50">
-        <div className="flex items-center justify-around px-4 py-3">
+        <div className="flex items-center justify-around px-1 py-2">
           {navItems.map(({ path, icon: Icon, label }) => {
             const isActive = path === "/" ? location.pathname === "/" : location.pathname === path || location.pathname.startsWith(path + "/");
             return (
               <Link
                 key={path}
                 to={path}
-                className={`flex flex-col items-center gap-1 px-4 py-2 rounded-lg transition-all ${
+                className={`flex flex-col items-center gap-0.5 px-2 py-1.5 rounded-lg transition-all ${
                   isActive
                     ? "text-[#E5381E] bg-[#141111]/50"
                     : "text-[#C7C1B6] hover:text-[#E5381E]"
                 }`}
               >
                 <Icon className="w-5 h-5" />
-                <span className="text-xs font-medium">{label}</span>
+                <span className="text-[10px] font-medium leading-tight">{label}</span>
               </Link>
             );
           })}
