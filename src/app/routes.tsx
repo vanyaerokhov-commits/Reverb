@@ -14,6 +14,7 @@ import { ResaleEventDetail } from "./components/ResaleEventDetail";
 import { UserProfile } from "./components/UserProfile";
 import { ArtistDetail } from "./components/ArtistDetail";
 import { Shop } from "./components/Shop";
+import { ShopProduct } from "./components/ShopProduct";
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +35,7 @@ export const router = createBrowserRouter([
       { path: "route-planner", Component: RoutePlanner },
       { path: "route-checkout", Component: RouteCheckout },
       { path: "shop", Component: Shop },
+      { path: "shop/:productId", Component: ShopProduct },
     ],
   },
 ]);
