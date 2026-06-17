@@ -1,11 +1,22 @@
+# Reverb — Music Events App
 
-  # Music Industry App Concept
+A web application for discovering concerts, buying tickets, exploring artists, and shopping official merch.
 
-  This is a code bundle for Music Industry App Concept. The original project is available at https://www.figma.com/design/AGGpV6A1ceUI7BBLg9csqW/Music-Industry-App-Concept.
+**Live site:** https://reverb-ten.vercel.app
 
-  ## Running the code
+## Tech Stack
 
-  Run `npm i` to install the dependencies.
+- React 18 + TypeScript
+- Vite
+- Tailwind CSS
+- React Router v7
+- shadcn/ui
 
-  Run `npm run dev` to start the development server.
-  
+## Running locally
+
+```bash
+npm i
+npm run dev
+```
+
+Opens at `http://localhost:5173`
